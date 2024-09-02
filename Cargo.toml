@@ -30,6 +30,7 @@ embedded-hal-alpha = { package = "embedded-hal", version = "1.0.0", optional = t
 embedded-hal-mock = "0.9"
 
 [features]
+default = ["eh-alpha"]
 std = ["once_cell"]
 xtensa = ["xtensa-lx", "spin"]
 cortex-m = ["dep:cortex-m", "atomic-polyfill"]

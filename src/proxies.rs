@@ -121,12 +121,12 @@ where
         self.mutex.lock(|bus| bus.write(address, bytes))
     }
 
-    fn write_iter<B>(&mut self, address: u8, bytes: B) -> Result<(), Self::Error>
-    where
-        B: IntoIterator<Item = u8>,
-    {
-        self.mutex.lock(|bus| bus.write_iter(address, bytes))
-    }
+    // fn write_iter<B>(&mut self, address: u8, bytes: B) -> Result<(), Self::Error>
+    // where
+    //     B: IntoIterator<Item = u8>,
+    // {
+    //     self.mutex.lock(|bus| bus.write_iter(address, bytes))
+    // }
 
     fn write_read(
         &mut self,
@@ -138,18 +138,18 @@ where
             .lock(|bus| bus.write_read(address, bytes, buffer))
     }
 
-    fn write_iter_read<B>(
-        &mut self,
-        address: u8,
-        bytes: B,
-        buffer: &mut [u8],
-    ) -> Result<(), Self::Error>
-    where
-        B: IntoIterator<Item = u8>,
-    {
-        self.mutex
-            .lock(|bus| bus.write_iter_read(address, bytes, buffer))
-    }
+    // fn write_iter_read<B>(
+    //     &mut self,
+    //     address: u8,
+    //     bytes: B,
+    //     buffer: &mut [u8],
+    // ) -> Result<(), Self::Error>
+    // where
+    //     B: IntoIterator<Item = u8>,
+    // {
+    //     self.mutex
+    //         .lock(|bus| bus.write_iter_read(address, bytes, buffer))
+    // }
 
     fn transaction<'b>(
         &mut self,
@@ -159,13 +159,13 @@ where
         self.mutex.lock(|bus| bus.transaction(address, operations))
     }
 
-    fn transaction_iter<'b, O>(&mut self, address: u8, operations: O) -> Result<(), Self::Error>
-    where
-        O: IntoIterator<Item = i2c_alpha::Operation<'b>>,
-    {
-        self.mutex
-            .lock(|bus| bus.transaction_iter(address, operations))
-    }
+    //     fn transaction_iter<'b, O>(&mut self, address: u8, operations: O) -> Result<(), Self::Error>
+    //     where
+    //         O: IntoIterator<Item = i2c_alpha::Operation<'b>>,
+    //     {
+    //         self.mutex
+    //             .lock(|bus| bus.transaction_iter(address, operations))
+    //     }
 }
 
 /// Proxy type for SPI bus sharing.
